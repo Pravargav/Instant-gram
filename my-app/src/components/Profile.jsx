@@ -37,7 +37,7 @@ const Profile = () => {
   }, []);
 
   const handleBack = () => {
-    localStorage.removeItem('current_Logged_In_Id');
+    
     sessionStorage.removeItem('current_Logged_In_Id');
     window.sessionStorage.setItem("current_Logged_In_Id", profile.id);
     setCurrIdHelp(profile.id);
@@ -45,6 +45,7 @@ const Profile = () => {
   };
 
   const handleConfirm = () => {
+    sessionStorage.removeItem('current_Logged_In_Id');
     window.sessionStorage.setItem("current_Logged_In_Id", profile.id);
     setCurrIdHelp(profile.id);
     navigate('/dashboard'); // Navigate back to the dashboard

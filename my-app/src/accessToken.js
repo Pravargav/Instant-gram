@@ -1,3 +1,3 @@
 export const useGetAccessToken = () => {	
-    return window.localStorage.getItem('instagram_access_token');	
+    return window.sessionStorage.getItem('instagram_access_token');	
   };

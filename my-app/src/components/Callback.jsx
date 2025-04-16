@@ -58,7 +58,7 @@ const Callback = () => {
     const token = response.data.access_token;
     const id = response.data.user_id;
 
-    localStorage.removeItem('instagram_access_token');
+
     sessionStorage.removeItem('instagram_access_token');
     window.sessionStorage.setItem("instagram_access_token", token);
     window.sessionStorage.setItem("instagram_user_id", id);

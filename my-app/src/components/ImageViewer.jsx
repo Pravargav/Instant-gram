@@ -42,8 +42,8 @@ function ImageViewer() {
     try {
       // Set loading state for this specific media item
       setLoadingComments(prev => ({ ...prev, [mediaId]: true }));
-      
-      const response = await fetch(`https://instant-gram-navy.vercel.app/api/instagram-comments?mediaId=${mediaId}`);
+      const accToktoUse= currAccTok ||accesss_token;
+      const response = await fetch(`https://instant-gram-navy.vercel.app/api/instagram-comments?mediaId=${mediaId}&accTok=${accToktoUse}`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -109,8 +109,8 @@ function ImageViewer() {
     
     try {
       setSubmittingReply(prev => ({ ...prev, [commentId]: true }));
-      
-      const response = await fetch('https://instant-gram-navy.vercel.app/api/instagram-comment-reply', {
+      const accToktoUse= currAccTok ||accesss_token;
+      const response = await fetch(`https://instant-gram-navy.vercel.app/api/instagram-comment-reply?accTok=${accToktoUse}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
