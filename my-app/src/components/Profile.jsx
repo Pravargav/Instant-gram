@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Profile.css';
+import { useContext } from "react";
+import { Appcontext } from "../App";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const {accesss_token,currAccTok,setCurrIdHelp } = useContext(Appcontext);
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         setLoading(true);
-        const response = await fetch('https://instant-gram-navy.vercel.app/api/instagram-profile');
+        const accToktoUse= currAccTok ||accesss_token;
+        const response = await fetch(`https://instant-gram-navy.vercel.app/api/instagram-profile?accTok=${accToktoUse}`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -33,7 +37,16 @@ const Profile = () => {
   }, []);
 
   const handleBack = () => {
-    window.localStorage.setItem("current_Logged_In_Id", profile.id);
+    localStorage.removeItem('current_Logged_In_Id');
+    sessionStorage.removeItem('current_Logged_In_Id');
+    window.sessionStorage.setItem("current_Logged_In_Id", profile.id);
+    setCurrIdHelp(profile.id);
+    navigate('/dashboard'); // Navigate back to the dashboard
+  };
+
+  const handleConfirm = () => {
+    window.sessionStorage.setItem("current_Logged_In_Id", profile.id);
+    setCurrIdHelp(profile.id);
     navigate('/dashboard'); // Navigate back to the dashboard
   };
 
@@ -120,6 +133,7 @@ const Profile = () => {
                 <strong>Instagram ID:</strong> {profile.id}
               </div>
             </div>
+            <button onClick={handleConfirm} className="back-button">Confirm profile</button>
           </div>
         </div>
       )}

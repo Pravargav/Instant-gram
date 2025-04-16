@@ -8,7 +8,7 @@ import Profile from "./components/Profile";
 import ReelViewer from "./components/ReelViewer";
 import { useGetUserId } from "./userId";
 import { useGetAccessToken } from "./accessToken";
-import { createContext } from "react";
+import { createContext,useState } from "react";
 import { useGetCurrentId } from "./currentId";
 
 
@@ -18,6 +18,8 @@ function App() {
   const user_id=useGetUserId();
   const access_token=useGetAccessToken();
   const current_id=useGetCurrentId();
+  const [currIdHelp, setCurrIdHelp] = useState('');
+  const [currAccTok, setCurrAccTok] = useState('');
 
   return (
     <div className="App">
@@ -25,7 +27,11 @@ function App() {
         value={{
             user_id,
             access_token,
-            current_id
+            current_id,
+            currIdHelp,
+            setCurrIdHelp,
+            currAccTok,
+            setCurrAccTok
         }}
       >
        

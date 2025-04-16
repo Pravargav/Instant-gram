@@ -1,7 +1,7 @@
 // src/components/InstagramAuth.jsx
 
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+
 
 const InstagramAuth = () => {
   const [accessToken, setAccessToken] = useState('');
@@ -47,26 +47,12 @@ const InstagramAuth = () => {
       formData.append('redirect_uri', redirectUri);
       formData.append('code', code);
       
-      const response = await axios.post(
-        'https://api.instagram.com/oauth/access_token',
-        formData.toString(),
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-        }
-      );
+
       
-      // Store the access token and user ID
-      const token = response.data.access_token;
-      const id = response.data.user_id;
+      setAccessToken('');
+      setUserId('');
       
-      setAccessToken(token);
-      setUserId(id);
-      
-      // Store in localStorage for persistence
-      localStorage.setItem('instagram_access_token', token);
-      localStorage.setItem('instagram_user_id', id);
+
       
       console.log('Authentication successful!');
     } catch (err) {
@@ -93,7 +79,7 @@ const InstagramAuth = () => {
         <div className="auth-success">
           <p>Successfully authenticated!</p>
           <p>User ID: {userId}</p>
-          <p>Access Token: {accessToken.substring(0, 10)}...</p>
+          <p>Access Token: {accessToken}</p>
         </div>
       )}
       

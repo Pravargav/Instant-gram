@@ -9,7 +9,7 @@ import { Appcontext } from "../App";
 const Callback = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { user_id, access_token, current_id } = useContext(Appcontext);
+  const { user_id, access_token, current_id,setCurrAccTok } = useContext(Appcontext);
 
   useEffect(() => {
     const code = searchParams.get("code");
@@ -58,15 +58,18 @@ const Callback = () => {
     const token = response.data.access_token;
     const id = response.data.user_id;
 
-    window.localStorage.setItem("instagram_access_token", token);
-    window.localStorage.setItem("instagram_user_id", id);
+    localStorage.removeItem('instagram_access_token');
+    sessionStorage.removeItem('instagram_access_token');
+    window.sessionStorage.setItem("instagram_access_token", token);
+    window.sessionStorage.setItem("instagram_user_id", id);
 
     console.log("user_id"+user_id);
     console.log("access_token"+access_token);
     console.log("current_id"+current_id);
+    setCurrAccTok(token);
 
-    console.log("u"+window.localStorage.getItem("instagram_access_token"));
-    console.log("a"+window.localStorage.getItem("instagram_user_id"));
+    console.log("u"+window.sessionStorage.getItem("instagram_access_token"));
+    console.log("a"+window.sessionStorage.getItem("instagram_user_id"));
 
     return response.data;
   };

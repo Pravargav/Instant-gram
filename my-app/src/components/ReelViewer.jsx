@@ -9,13 +9,14 @@ function ReelViewer() {
   const [error, setError] = useState(null);
   const [currentReelIndex, setCurrentReelIndex] = useState(0);
   const reelRefs = useRef([]);
-  const {current_id } = useContext(Appcontext);
-
+  const {current_id ,currIdHelp,access_token,currAccTok} = useContext(Appcontext);
   useEffect(() => {
     const fetchInstagramReels = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`https://instant-gram-navy.vercel.app/api/instagram-reels?currId=${current_id}`);
+        const idToUse = current_id || currIdHelp;
+        const accTokToUse = access_token || currAccTok;
+        const response = await fetch(`https://instant-gram-navy.vercel.app/api/instagram-reels?currId=${idToUse}&accTok=${accTokToUse}`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

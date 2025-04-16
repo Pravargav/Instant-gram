@@ -11,13 +11,15 @@ function ImageViewer() {
   const [loadingComments, setLoadingComments] = useState({});
   const [replyStates, setReplyStates] = useState({});
   const [submittingReply, setSubmittingReply] = useState({});
-  const {current_id } = useContext(Appcontext);
+  const {current_id ,currIdHelp,accesss_token,currAccTok } = useContext(Appcontext);
 
   useEffect(() => {
     const fetchInstagramMedia = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`https://instant-gram-navy.vercel.app/api/instagram-media?currId=${current_id}`);
+        const idToUse = current_id || currIdHelp;
+        const accToktoUse= currAccTok ||accesss_token;
+        const response = await fetch(`https://instant-gram-navy.vercel.app/api/instagram-media?currId=${idToUse}&accTok=${accToktoUse}`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
