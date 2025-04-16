@@ -41,7 +41,8 @@ app.post('/proxy/instagram/token', async (req, res) => {
 
 app.get('/api/instagram-media', async (req, res) => {
   try {
-    const { currId } = req.query;
+    // const { currId } = req.query;
+    const currId = '9846092805434911';
     const accessToken = 'IGAAJRWZCHRX05BZAE1LTEtFSmYxRy13VUs2M2lFLVpBOC1fdUJ1WGMyZADlTczZAjZAUdJQ3p3cmhfdEhzYnBnd0RnQXFldS02VktDejd6ZAC1neVYycElSSVVEM0JXSE5UMDRvcWlPeGRxYTBMb2lfTHI0Y0pESzFVRDVNM0VGa0gxVQZDZD';
     
     const response = await axios.get(
@@ -60,7 +61,8 @@ app.get('/api/instagram-media', async (req, res) => {
 
 app.get('/api/instagram-reels', async (req, res) => {
   try {
-    const { currId } = req.query;
+    // const { currId } = req.query;
+    const currId = '9846092805434911';
     const accessToken = 'IGAAJRWZCHRX05BZAE1LTEtFSmYxRy13VUs2M2lFLVpBOC1fdUJ1WGMyZADlTczZAjZAUdJQ3p3cmhfdEhzYnBnd0RnQXFldS02VktDejd6ZAC1neVYycElSSVVEM0JXSE5UMDRvcWlPeGRxYTBMb2lfTHI0Y0pESzFVRDVNM0VGa0gxVQZDZD';
     
     // Fetch all media first
