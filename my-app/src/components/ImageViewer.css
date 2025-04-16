@@ -1,0 +1,133 @@
+.ImageViewer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .ImageViewer-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .media-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .media-item img,
+  .media-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .media-item p {
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+  }
+
+  /* Add this to your existing ImageViewer.css file */
+.comments-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .comment {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+  }
+  
+  .comment-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .comment-content strong {
+    margin-right: 5px;
+  }
+  
+  .reply-button {
+    margin-left: 10px;
+    background: transparent;
+    border: none;
+    color: #3897f0;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0;
+    font-weight: bold;
+  }
+  
+  .reply-button:hover {
+    text-decoration: underline;
+  }
+  
+  .reply-form {
+    display: flex;
+    margin: 8px 0 8px 20px;
+  }
+  
+  .reply-form input {
+    flex: 1;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    padding: 8px 10px;
+    margin-right: 8px;
+    font-size: 14px;
+  }
+  
+  .reply-form button {
+    background-color: #3897f0;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .reply-form button:disabled {
+    background-color: #b2dffc;
+    cursor: not-allowed;
+  }
+  
+  .replies-list {
+    list-style-type: none;
+    padding: 0 0 0 20px;
+    margin: 8px 0 0 0;
+  }
+  
+  .reply {
+    font-size: 14px;
+    padding: 5px 0;
+    color: #262626;
+  }
+  
+  .comments-loading,
+  .comments-error,
+  .no-comments {
+    padding: 10px;
+    text-align: center;
+    color: #8e8e8e;
+  }
+  
+  .comments-error {
+    color: #ed4956;
+  }

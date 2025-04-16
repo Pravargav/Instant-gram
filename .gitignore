@@ -1,0 +1,14 @@
+my-app/node_modules/
+server/node_modules/
+
+# Environment variables
+my-app/.env
+my-app/.env.local
+my-app/.env.*.local
+server/.env
+server/.env.local
+server/.env.*.local
+
+# Build output
+my-app/dist/
+server/dist/
