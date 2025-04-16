@@ -12,7 +12,7 @@ const Profile = () => {
     const fetchProfile = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:3000/api/instagram-profile');
+        const response = await fetch('https://instant-gram-navy.vercel.app/api/instagram-profile');
         
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

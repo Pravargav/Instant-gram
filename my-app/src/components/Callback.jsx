@@ -47,7 +47,7 @@ const Callback = () => {
   const exchangeCodeForToken = async (code) => {
     // In production, this should be a call to your backend
     const response = await axios.post(
-      "http://localhost:3000/proxy/instagram/token",
+      "https://instant-gram-navy.vercel.app/proxy/instagram/token",
       { code }
     );
 

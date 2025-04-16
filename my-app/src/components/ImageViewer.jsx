@@ -17,7 +17,7 @@ function ImageViewer() {
     const fetchInstagramMedia = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:3000/api/instagram-media?currId=${current_id}`);
+        const response = await fetch(`https://instant-gram-navy.vercel.app/api/instagram-media?currId=${current_id}`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -41,7 +41,7 @@ function ImageViewer() {
       // Set loading state for this specific media item
       setLoadingComments(prev => ({ ...prev, [mediaId]: true }));
       
-      const response = await fetch(`http://localhost:3000/api/instagram-comments?mediaId=${mediaId}`);
+      const response = await fetch(`https://instant-gram-navy.vercel.app/api/instagram-comments?mediaId=${mediaId}`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -108,7 +108,7 @@ function ImageViewer() {
     try {
       setSubmittingReply(prev => ({ ...prev, [commentId]: true }));
       
-      const response = await fetch('http://localhost:3000/api/instagram-comment-reply', {
+      const response = await fetch('https://instant-gram-navy.vercel.app/api/instagram-comment-reply', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

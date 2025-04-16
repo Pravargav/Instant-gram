@@ -15,7 +15,7 @@ function ReelViewer() {
     const fetchInstagramReels = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:3000/api/instagram-reels?currId=${current_id}`);
+        const response = await fetch(`https://instant-gram-navy.vercel.app/api/instagram-reels?currId=${current_id}`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
