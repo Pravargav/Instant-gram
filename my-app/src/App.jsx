@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import InstagramAuth from "./components/Instagramauth";
+import InstagramAuth from "./components/InstagramAuth";
 import Callback from "./components/Callback";
 import Dashboard from "./components/Dashboard";
 import ImageViewer from "./components/ImageViewer";
