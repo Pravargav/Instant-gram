@@ -13,7 +13,7 @@ const InstagramAuth = () => {
   // Your Instagram App credentials
   const clientId = '652405294325582';
   const clientSecret = 'fe971954f18bcce5a514900b23efd451'; // In a real app, never expose this in client-side code
-  const redirectUri = 'https://localhost:5173/callback';
+  const redirectUri = 'https://instant-gram-fr-pi.vercel.app/callback';
   const scope = 'instagram_business_basic,instagram_business_manage_messages,instagram_business_manage_comments,instagram_business_content_publish';
 
   // Check for authorization code on component mount (after redirect)

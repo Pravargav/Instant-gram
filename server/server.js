@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(cors({ origin: 'https://localhost:5173' })); // Allow only your frontend
+app.use(cors({ origin: 'https://instant-gram-fr-pi.vercel.app' })); // Allow only your frontend
 app.use(bodyParser.json());
 
 app.post('/proxy/instagram/token', async (req, res) => {
@@ -16,7 +16,7 @@ app.post('/proxy/instagram/token', async (req, res) => {
     formData.append('client_id', '652405294325582');
     formData.append('client_secret', 'fe971954f18bcce5a514900b23efd451'); // Keep this secure on your server
     formData.append('grant_type', 'authorization_code');
-    formData.append('redirect_uri', 'https://localhost:5173/callback');
+    formData.append('redirect_uri', 'https://instant-gram-fr-pi.vercel.app/callback');
     formData.append('code', code);
     
     const response = await axios.post(
