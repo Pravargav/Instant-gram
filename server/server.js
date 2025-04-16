@@ -41,12 +41,12 @@ app.post('/proxy/instagram/token', async (req, res) => {
 
 app.get('/api/instagram-media', async (req, res) => {
   try {
-    // const { currId } = req.query;
-    const currId = '9846092805434911';
-    const accessToken = 'IGAAJRWZCHRX05BZAE1LTEtFSmYxRy13VUs2M2lFLVpBOC1fdUJ1WGMyZADlTczZAjZAUdJQ3p3cmhfdEhzYnBnd0RnQXFldS02VktDejd6ZAC1neVYycElSSVVEM0JXSE5UMDRvcWlPeGRxYTBMb2lfTHI0Y0pESzFVRDVNM0VGa0gxVQZDZD';
+    const { currId ,accTok} = req.query;
+    // const currId = '9846092805434911';
+    // const accessToken = 'IGAAJRWZCHRX05BZAE1LTEtFSmYxRy13VUs2M2lFLVpBOC1fdUJ1WGMyZADlTczZAjZAUdJQ3p3cmhfdEhzYnBnd0RnQXFldS02VktDejd6ZAC1neVYycElSSVVEM0JXSE5UMDRvcWlPeGRxYTBMb2lfTHI0Y0pESzFVRDVNM0VGa0gxVQZDZD';
     
     const response = await axios.get(
-      `https://graph.instagram.com/v22.0/${currId}/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token=${accessToken}`
+      `https://graph.instagram.com/v22.0/${currId}/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token=${accTok}`
     );
     
     res.json(response.data);
@@ -61,13 +61,13 @@ app.get('/api/instagram-media', async (req, res) => {
 
 app.get('/api/instagram-reels', async (req, res) => {
   try {
-    // const { currId } = req.query;
-    const currId = '9846092805434911';
-    const accessToken = 'IGAAJRWZCHRX05BZAE1LTEtFSmYxRy13VUs2M2lFLVpBOC1fdUJ1WGMyZADlTczZAjZAUdJQ3p3cmhfdEhzYnBnd0RnQXFldS02VktDejd6ZAC1neVYycElSSVVEM0JXSE5UMDRvcWlPeGRxYTBMb2lfTHI0Y0pESzFVRDVNM0VGa0gxVQZDZD';
+    const { currId,accTok } = req.query;
+    // const currId = '9846092805434911';
+    // const accessToken = 'IGAAJRWZCHRX05BZAE1LTEtFSmYxRy13VUs2M2lFLVpBOC1fdUJ1WGMyZADlTczZAjZAUdJQ3p3cmhfdEhzYnBnd0RnQXFldS02VktDejd6ZAC1neVYycElSSVVEM0JXSE5UMDRvcWlPeGRxYTBMb2lfTHI0Y0pESzFVRDVNM0VGa0gxVQZDZD';
     
     // Fetch all media first
     const response = await axios.get(
-      `https://graph.instagram.com/v22.0/${currId}/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token=${accessToken}`
+      `https://graph.instagram.com/v22.0/${currId}/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token=${accTok}`
     );
     
     // Filter for VIDEO, REEL types and CAROUSEL_ALBUM with thumbnail_url
@@ -94,8 +94,9 @@ app.get('/api/instagram-reels', async (req, res) => {
 // Route to fetch Instagram comments for a specific media
 app.get('/api/instagram-comments', async (req, res) => {
   try {
-    const { mediaId } = req.query;
-    const accessToken = 'IGAAJRWZCHRX05BZAE1LTEtFSmYxRy13VUs2M2lFLVpBOC1fdUJ1WGMyZADlTczZAjZAUdJQ3p3cmhfdEhzYnBnd0RnQXFldS02VktDejd6ZAC1neVYycElSSVVEM0JXSE5UMDRvcWlPeGRxYTBMb2lfTHI0Y0pESzFVRDVNM0VGa0gxVQZDZD';
+    const { mediaId,accTok } = req.query;
+    // const accessToken = 'IGAAJRWZCHRX05BZAE1LTEtFSmYxRy13VUs2M2lFLVpBOC1fdUJ1WGMyZADlTczZAjZAUdJQ3p3cmhfdEhzYnBnd0RnQXFldS02VktDejd6ZAC1neVYycElSSVVEM0JXSE5UMDRvcWlPeGRxYTBMb2lfTHI0Y0pESzFVRDVNM0VGa0gxVQZDZD';
+    
     
     if (!mediaId) {
       return res.status(400).json({ error: 'Media ID is required' });
@@ -106,7 +107,7 @@ app.get('/api/instagram-comments', async (req, res) => {
       {
         params: {
           fields: 'id,text,username,timestamp,like_count,replies{id,text,username,timestamp,like_count}',
-          access_token: accessToken
+          access_token: accTok
         }
       }
     );
@@ -133,8 +134,8 @@ app.get('/api/instagram-comments', async (req, res) => {
 app.post('/api/instagram-comment-reply', async (req, res) => {
   try {
     const { commentId, message } = req.body;
-    const accessToken = 'IGAAJRWZCHRX05BZAE1LTEtFSmYxRy13VUs2M2lFLVpBOC1fdUJ1WGMyZADlTczZAjZAUdJQ3p3cmhfdEhzYnBnd0RnQXFldS02VktDejd6ZAC1neVYycElSSVVEM0JXSE5UMDRvcWlPeGRxYTBMb2lfTHI0Y0pESzFVRDVNM0VGa0gxVQZDZD';
-    
+    // const accessToken = 'IGAAJRWZCHRX05BZAE1LTEtFSmYxRy13VUs2M2lFLVpBOC1fdUJ1WGMyZADlTczZAjZAUdJQ3p3cmhfdEhzYnBnd0RnQXFldS02VktDejd6ZAC1neVYycElSSVVEM0JXSE5UMDRvcWlPeGRxYTBMb2lfTHI0Y0pESzFVRDVNM0VGa0gxVQZDZD';
+    const {accTok}= req.query;
     if (!commentId) {
       return res.status(400).json({ error: 'Comment ID is required' });
     }
@@ -148,7 +149,7 @@ app.post('/api/instagram-comment-reply', async (req, res) => {
       { message },
       {
         params: {
-          access_token: accessToken
+          access_token: accTok
         },
         headers: {
           'Content-Type': 'application/json'
@@ -177,7 +178,8 @@ app.post('/api/instagram-comment-reply', async (req, res) => {
 app.get('/api/instagram-profile', async (req, res) => {
   try {
     // Using the same access token you used for media
-    const accessToken = 'IGAAJRWZCHRX05BZAE1LTEtFSmYxRy13VUs2M2lFLVpBOC1fdUJ1WGMyZADlTczZAjZAUdJQ3p3cmhfdEhzYnBnd0RnQXFldS02VktDejd6ZAC1neVYycElSSVVEM0JXSE5UMDRvcWlPeGRxYTBMb2lfTHI0Y0pESzFVRDVNM0VGa0gxVQZDZD';
+    const {accTok} = req.query;
+    // const accessToken = 'IGAAJRWZCHRX05BZAE1LTEtFSmYxRy13VUs2M2lFLVpBOC1fdUJ1WGMyZADlTczZAjZAUdJQ3p3cmhfdEhzYnBnd0RnQXFldS02VktDejd6ZAC1neVYycElSSVVEM0JXSE5UMDRvcWlPeGRxYTBMb2lfTHI0Y0pESzFVRDVNM0VGa0gxVQZDZD';
     
     // Call the Instagram Graph API /me endpoint
     const response = await axios.get(
@@ -185,7 +187,7 @@ app.get('/api/instagram-profile', async (req, res) => {
       {
         params: {
           fields: 'id,username,account_type,media_count,biography,website,name,profile_picture_url',
-          access_token: accessToken
+          access_token: accTok
         }
       }
     );
